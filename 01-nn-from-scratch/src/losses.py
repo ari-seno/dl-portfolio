@@ -28,5 +28,5 @@ class BinaryCrossEntropy:
         m = self.y_true.shape[0]
         dA = (
             -(self.y_true / self.y_pred) + (1 - self.y_true) / (1 - self.y_pred)
-        ) / m
+        )
         return dA

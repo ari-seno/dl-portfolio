@@ -10,7 +10,7 @@ def load_data(n_samples: int = 500, noise: float = 0.2, seed: int = 42):
 
 
 def train(model: NeuralNetwork, X: np.ndarray, y: np.ndarray,
-          epochs: int = 1000, learning_rate: float = 0.1,
+          epochs: int = 1000, learning_rate: float = 0.2,
           print_every: int = 100) -> list:
     losses = []
 
@@ -30,11 +30,11 @@ def train(model: NeuralNetwork, X: np.ndarray, y: np.ndarray,
 
 
 if __name__ == "__main__":
-    X, y = load_data(n_samples=500, noise=0.2, seed=42)
+    X, y = load_data(n_samples=500, noise=0.15, seed=42)
 
-    model = NeuralNetwork(input_dim=2, hidden_dim=16, output_dim=1)
+    model = NeuralNetwork(input_dim=2, hidden_dim=32, output_dim=1)
 
-    losses = train(model, X, y, epochs=1000, learning_rate=0.1, print_every=100)
+    losses = train(model, X, y, epochs=4000, learning_rate=0.3, print_every=100)
 
     final_preds = model.predict(X)
     final_accuracy = np.mean(final_preds == y)
