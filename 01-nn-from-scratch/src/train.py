@@ -1,40 +1,41 @@
 import numpy as np
-from src.layers import Dense
-from src.activations import ReLU, Sigmoid
-from src.losses import BinaryCrossEntropy
+from sklearn.datasets import make_moons
+from src.model import NeuralNetwork
 
 
-class NeuralNetwork:
-    """
-    Simple feedforward neural network for binary classification.
-    Architecture (default): Input -> Dense -> ReLU -> Dense -> Sigmoid -> Output
-    """
+def load_data(n_samples: int = 500, noise: float = 0.2, seed: int = 42):
+    X, y = make_moons(n_samples=n_samples, noise=noise, random_state=seed)
+    y = y.reshape(-1, 1)  # bentuk (m, 1) supaya cocok dengan output Sigmoid
+    return X, y
 
-    def __init__(self, input_dim: int, hidden_dim: int, output_dim: int = 1):
-        self.dense1 = Dense(input_dim, hidden_dim)
-        self.relu1 = ReLU()
-        self.dense2 = Dense(hidden_dim, output_dim)
-        self.sigmoid1 = Sigmoid()
 
-        self.loss_fn = BinaryCrossEntropy()
+def train(model: NeuralNetwork, X: np.ndarray, y: np.ndarray,
+          epochs: int = 1000, learning_rate: float = 0.1,
+          print_every: int = 100) -> list:
+    losses = []
 
-    def forward(self, X: np.ndarray) -> np.ndarray:
-        Z1 = self.dense1.forward(X)
-        A1 = self.relu1.forward(Z1)
-        Z2 = self.dense2.forward(A1)
-        A2 = self.sigmoid1.forward(Z2)
-        return A2
+    for epoch in range(1, epochs + 1):
+        y_pred = model.forward(X)
+        loss = model.compute_loss(y_pred, y)
+        model.backward(learning_rate)
 
-    def backward(self, learning_rate: float) -> None:
-        dA2 = self.loss_fn.backward()
-        dZ2 = self.sigmoid1.backward(dA2)
-        dA1 = self.dense2.backward(dZ2, learning_rate)
-        dZ1 = self.relu1.backward(dA1)
-        self.dense1.backward(dZ1, learning_rate)
+        losses.append(loss)
 
-    def compute_loss(self, y_pred: np.ndarray, y_true: np.ndarray) -> float:
-        return self.loss_fn.forward(y_pred, y_true)
+        if epoch % print_every == 0 or epoch == 1:
+            preds = model.predict(X)
+            accuracy = np.mean(preds == y)
+            print(f"Epoch {epoch:4d} | Loss: {loss:.4f} | Accuracy: {accuracy:.4f}")
 
-    def predict(self, X: np.ndarray, threshold: float = 0.5) -> np.ndarray:
-        y_pred = self.forward(X)
-        return (y_pred >= threshold).astype(int)
+    return losses
+
+
+if __name__ == "__main__":
+    X, y = load_data(n_samples=500, noise=0.2, seed=42)
+
+    model = NeuralNetwork(input_dim=2, hidden_dim=16, output_dim=1)
+
+    losses = train(model, X, y, epochs=1000, learning_rate=0.1, print_every=100)
+
+    final_preds = model.predict(X)
+    final_accuracy = np.mean(final_preds == y)
+    print(f"\nFinal training accuracy: {final_accuracy:.4f}")
