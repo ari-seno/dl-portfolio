@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Outputs (generated files, plots)
+outputs/*.png
+outputs/*.pt
+
+# Dataset (file besar, jangan commit ke repo)
+data/*.csv
+
+# OS
+.DS_Store
