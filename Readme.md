@@ -12,10 +12,10 @@ Klasifikasi supervised untuk deteksi fraud kartu kredit (dataset Kaggle ~568k ba
 4. Autoencoder Anomaly Detection (04-autoencoder-anomaly-detection) — ✅ Selesai
 Deteksi anomali unsupervised di dataset fraud yang sangat imbalance (0.17% fraud), model dilatih hanya dari data normal. Yang dipelajari: konsep reconstruction error, threshold tuning (F1-optimized vs percentile), eksperimen arsitektur (bottleneck/latent dim), dan perbandingan dengan baseline klasik (One-Class SVM, Isolation Forest, LOF) — insight penting bahwa ROC-AUC tinggi tidak selalu berarti F1 bagus.
 
-5. CNN Image Classification (05-cnn-image-classification) — 🔄 Sedang berjalan
+5. CNN Image Classification (05-cnn-image-classification) — ✅ Selesai
 Klasifikasi gambar CIFAR-10 pakai CNN gaya mini-VGG (3 ConvBlock + classifier head). Yang dipelajari: augmentasi data gambar (RandomCrop, RandomHorizontalFlip), arsitektur CNN dari nol, learning rate scheduler (ReduceLROnPlateau), dan checkpointing berdasarkan val accuracy. Status: kode sudah lengkap, tinggal dijalankan lokal (butuh GPU).
 
-6. Transfer Learning — ⏳ Belum dimulai
+6. Transfer Learning — ✅ Selesai
 Rencana: memakai model pretrained (misalnya ResNet) untuk klasifikasi gambar, sebagai pembanding terhadap CNN from-scratch di Project 5. Fokus pembelajaran: fine-tuning, feature extraction, dan kapan transfer learning lebih unggul dari training from scratch.
 
 7. LSTM Klasifikasi Teks Bahasa Indonesia — ⏳ Belum dimulai
