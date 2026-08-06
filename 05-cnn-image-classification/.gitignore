@@ -1,0 +1,28 @@
+# Data (CIFAR-10 auto-downloaded, jangan commit)
+data/*
+!data/.gitkeep
+
+# Outputs (model checkpoints, plots, hasil eksperimen)
+outputs/*
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtualenv (pyenv version tetap di-commit via .python-version, ini untuk venv lain kalau ada)
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
