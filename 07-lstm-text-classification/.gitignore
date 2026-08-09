@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Virtualenv (pyenv-managed, not committed)
+.venv/
+venv/
+
+# Data & outputs (large/regenerable, not committed)
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# OS
+.DS_Store
