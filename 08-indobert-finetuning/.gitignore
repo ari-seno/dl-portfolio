@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Virtual environment
+venv/
+.venv/
+
+# Data & outputs (large/generated files, tracked via .gitkeep instead)
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# IndoBERT specific: cached pretrained weights kalau di-download lokal
+# (biasanya HuggingFace cache di ~/.cache/huggingface, tapi jaga-jaga kalau ada yang ke-download ke folder project)
+*.bin
+*.safetensors

@@ -18,11 +18,11 @@ Klasifikasi gambar CIFAR-10 pakai CNN gaya mini-VGG (3 ConvBlock + classifier he
 6. Transfer Learning — ✅ Selesai
 Rencana: memakai model pretrained (misalnya ResNet) untuk klasifikasi gambar, sebagai pembanding terhadap CNN from-scratch di Project 5. Fokus pembelajaran: fine-tuning, feature extraction, dan kapan transfer learning lebih unggul dari training from scratch.
 
-7. LSTM Klasifikasi Teks Bahasa Indonesia — ⏳ Belum dimulai
+7. LSTM Klasifikasi Teks Bahasa Indonesia — ✅ Selesai
 Rencana: model LSTM untuk klasifikasi teks berbahasa Indonesia. Fokus pembelajaran: pemrosesan data sekuensial/NLP, embedding, dan arsitektur recurrent (LSTM).
 
-8. IndoBERT Fine-tuning — ⏳ Belum dimulai
-Rencana: fine-tuning model pretrained IndoBERT untuk tugas NLP Bahasa Indonesia. Fokus pembelajaran: transformer-based NLP, transfer learning di domain teks, dan perbandingan performa dengan LSTM di Project 7.
+8. IndoBERT Fine-tuning — ✅ Selesai
+Fine-tuning model transformer pretrained untuk sentiment analysis bahasa Indonesia (dataset SmSA, 3 kelas). Yang dipelajari: transformer-based NLP, transfer learning di domain teks, dan perbandingan antar model pretrained (indobert-base/large, XLM-R). Hasil: model terbaik `indobert-large-p1` — val F1-macro 0.932, test accuracy 0.938 / F1-macro 0.910. Proses juga meliputi hyperparameter sweep, early stopping, dan strategi thermal management untuk Intel Arc GPU (XPU).
 
 9. REST API + Docker Deployment — ⏳ Belum dimulai
 Rencana: membungkus salah satu model jadi REST API dan deploy pakai Docker. Fokus pembelajaran: MLOps dasar — serving model, containerization, dan deployment pipeline.
