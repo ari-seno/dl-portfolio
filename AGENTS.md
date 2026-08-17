@@ -14,3 +14,9 @@
 
 - `get_device()` di project 08: prioritas XPU > CUDA > CPU (sudah benar di `src/train.py`).
 - Gunakan interpreter `dl-portfolio` untuk semua training PyTorch di project ini.
+
+## Pengujian API (PENTING)
+
+- Saat melakukan tes API (mis. endpoint FastAPI project 09), boleh dan dianjurkan memakai **MCP server** bila tersedia (mis. Bruno MCP untuk koleksi `bruno/collection.json`).
+- Bila MCP yang dibutuhkan belum terpasang, silakan instal/konfigurasi MCP lain yang relevan (mis. server MCP untuk API testing/tooling).
+- Pastikan MCP dikonfigurasi lewat `opencode.json`/`opencode.jsonc` (global `~/.config/opencode/` atau per-project) agar tersedia di sesi berikutnya.
