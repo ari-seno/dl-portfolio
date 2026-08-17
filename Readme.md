@@ -24,8 +24,8 @@ Rencana: model LSTM untuk klasifikasi teks berbahasa Indonesia. Fokus pembelajar
 8. IndoBERT Fine-tuning — ✅ Selesai
 Fine-tuning model transformer pretrained untuk sentiment analysis bahasa Indonesia (dataset SmSA, 3 kelas). Yang dipelajari: transformer-based NLP, transfer learning di domain teks, dan perbandingan antar model pretrained (indobert-base/large, XLM-R). Hasil: model terbaik `indobert-large-p1` — val F1-macro 0.932, test accuracy 0.938 / F1-macro 0.910. Proses juga meliputi hyperparameter sweep, early stopping, dan strategi thermal management untuk Intel Arc GPU (XPU).
 
-9. REST API + Docker Deployment — ⏳ Belum dimulai
-Rencana: membungkus salah satu model jadi REST API dan deploy pakai Docker. Fokus pembelajaran: MLOps dasar — serving model, containerization, dan deployment pipeline.
+9. REST API + Docker Deployment — ✅ Selesai
+Membungkus model IndoBERT fine-tuning (Project 8) jadi REST API pakai FastAPI dan deploy dengan Docker. Yang dipelajari: MLOps dasar — serving model (endpoint /health, /metadata, /predict, /predict_batch), pydantic schema & validasi, lifespan model loading, containerization (Dockerfile + docker-compose dengan bind-mount model read-only), pengujian API dengan Bruno collection, dan OpenAPI docs otomatis. Hasil: 19 unit test lulus, API live di http://localhost:8000, koleksi Bruno siap import.
 
 10. Coding Agent — ⏳ Belum dimulai
 Rencana: mengembangkan Hermes Agent + RAG pipeline dengan tool-calling, integrasi filesystem/terminal/git, opsional LoRA fine-tune di Qwen2.5-Coder 7B. Fokus pembelajaran: agentic AI, tool use, RAG, dan opsional fine-tuning LLM dengan LoRA.

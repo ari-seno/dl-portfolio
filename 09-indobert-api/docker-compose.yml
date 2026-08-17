@@ -7,4 +7,3 @@ services:
       - ../08-indobert-finetuning/outputs/best_model:/app/model:ro
     environment:
       - DEVICE=cpu
-    restart: unless-stopped
