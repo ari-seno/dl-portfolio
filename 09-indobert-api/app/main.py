@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
 
+from app.config import LABELS, MAX_LENGTH
 from app.inference import SentimentModel
 from app.schemas import (
     HealthResponse,
@@ -36,16 +37,20 @@ def create_app(model: SentimentModel | None = None) -> FastAPI:
         return {
             "model_name": "indobert-large-p1",
             "model_type": "BertForSequenceClassification",
-            "labels": ["negative", "neutral", "positive"],
-            "max_length": 128,
+            "labels": LABELS,
+            "max_length": MAX_LENGTH,
         }
 
     @app.post("/predict", response_model=PredictResponse)
     def predict(req: PredictRequest):
+        if not model.loaded:
+            raise HTTPException(status_code=503, detail="Model not loaded")
         return model.predict(req.text)
 
     @app.post("/predict_batch", response_model=PredictBatchResponse)
     def predict_batch(req: PredictBatchRequest):
+        if not model.loaded:
+            raise HTTPException(status_code=503, detail="Model not loaded")
         return PredictBatchResponse(results=model.predict_batch(req.texts))
 
     return app

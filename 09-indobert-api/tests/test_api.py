@@ -55,6 +55,20 @@ def test_predict_empty_text_422():
     assert r.status_code == 422
 
 
+def test_predict_503_when_not_loaded():
+    model = SentimentModel(model_dir="model")
+    model.model = None
+    r = _make_client(model).post("/predict", json={"text": "bagus"})
+    assert r.status_code == 503
+
+
+def test_predict_batch_503_when_not_loaded():
+    model = SentimentModel(model_dir="model")
+    model.model = None
+    r = _make_client(model).post("/predict_batch", json={"texts": ["bagus"]})
+    assert r.status_code == 503
+
+
 def test_predict_batch_ok(monkeypatch):
     model = SentimentModel(model_dir="model")
     model.model = object()
@@ -67,3 +81,24 @@ def test_predict_batch_ok(monkeypatch):
     r = _make_client(model).post("/predict_batch", json={"texts": ["jelek", "buruk"]})
     assert r.status_code == 200
     assert len(r.json()["results"]) == 2
+
+
+def test_predict_batch_empty_element_422():
+    model = SentimentModel(model_dir="model")
+    model.model = object()
+    r = _make_client(model).post("/predict_batch", json={"texts": [""]})
+    assert r.status_code == 422
+
+
+def test_predict_batch_blank_element_422():
+    model = SentimentModel(model_dir="model")
+    model.model = object()
+    r = _make_client(model).post("/predict_batch", json={"texts": ["   "]})
+    assert r.status_code == 422
+
+
+def test_predict_batch_too_many_422():
+    model = SentimentModel(model_dir="model")
+    model.model = object()
+    r = _make_client(model).post("/predict_batch", json={"texts": ["x"] * 101})
+    assert r.status_code == 422

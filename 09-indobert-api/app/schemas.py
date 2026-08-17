@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class PredictRequest(BaseModel):
@@ -6,7 +6,15 @@ class PredictRequest(BaseModel):
 
 
 class PredictBatchRequest(BaseModel):
-    texts: list[str] = Field(..., min_length=1, description="Daftar teks")
+    texts: list[str] = Field(..., min_length=1, max_length=100, description="Daftar teks")
+
+    @field_validator("texts")
+    @classmethod
+    def texts_not_blank(cls, texts):
+        for text in texts:
+            if not text.strip():
+                raise ValueError("setiap teks harus non-kosong")
+        return texts
 
 
 class PredictResponse(BaseModel):

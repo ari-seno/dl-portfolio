@@ -1,7 +1,5 @@
-fastapi
-uvicorn[standard]
-torch
-transformers
-pydantic
-pytest
-httpx
+fastapi==0.141.1
+uvicorn[standard]==0.52.3
+torch==2.13.0
+transformers==5.15.0
+pydantic==2.13.4
