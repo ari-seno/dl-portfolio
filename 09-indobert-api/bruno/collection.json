@@ -1,0 +1,48 @@
+{
+  "version": "4",
+  "name": "IndoBERT Sentiment API",
+  "items": [
+    {
+      "type": "request",
+      "name": "health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8000/health"
+      }
+    },
+    {
+      "type": "request",
+      "name": "metadata",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8000/metadata"
+      }
+    },
+    {
+      "type": "request",
+      "name": "predict",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/predict",
+        "headers": [{"name": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "json",
+          "json": "{\"text\": \"filmnya bagus sekali\"}"
+        }
+      }
+    },
+    {
+      "type": "request",
+      "name": "predict_batch",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/predict_batch",
+        "headers": [{"name": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "json",
+          "json": "{\"texts\": [\"filmnya bagus sekali\", \"pelayanannya sangat buruk\"]}"
+        }
+      }
+    }
+  ]
+}
