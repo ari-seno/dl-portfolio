@@ -22,7 +22,7 @@ API ini merupakan layanan inferensi untuk model fine-tuning IndoBERT yang dilati
 │   ├── main.py            # create_app() dan instance FastAPI
 │   └── schemas.py         # skema request/response Pydantic
 ├── bruno/
-│   └── collection.json    # koleksi Bruno v4 (health, metadata, predict, predict_batch)
+│   └── collection.json    # koleksi Bruno (health, metadata, predict, predict_batch)
 ├── tests/                 # unit test & integration test
 ├── Dockerfile
 ├── docker-compose.yml
@@ -54,7 +54,7 @@ File `docker-compose.yml` melakukan bind-mount model dari `../08-indobert-finetu
 
 ## Import Koleksi ke Bruno
 
-1. Buka aplikasi Bruno (v1.x+ mendukung format collection v4).
+1. Buka aplikasi Bruno.
 2. Klik **Import** → pilih file `bruno/collection.json`.
 3. Koleksi **IndoBERT Sentiment API** akan muncul dengan 4 request siap pakai.
 
